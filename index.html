@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Built by Jake — Websites for Perth Businesses</title>
+<meta name="description" content="Jake builds fast, modern, mobile-friendly websites for small businesses in Perth, Western Australia. From first sketch to live site, done properly." />
+
+<!-- Open Graph — controls how the link previews when shared -->
+<meta property="og:title" content="Built by Jake — Websites for Perth Businesses" />
+<meta property="og:description" content="Fast, modern websites for small businesses in Perth, WA." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://builtbyjake.site" />
+<meta name="theme-color" content="#0c0d10" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-soft: #141519;
+    --panel: #181a1f;
+    --panel-hi: #1f2229;
+    --ink: #f4f3ee;
+    --ink-dim: #9a9b97;
+    --ink-faint: #6b6c69;
+    --accent: #d6ff4b;
+    --accent-deep: #b2d92e;
+    --line: #2a2c32;
+    --radius: 14px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* grain overlay for atmosphere */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+
+  h1, h2, h3, h4 { font-family: 'Fraunces', serif; font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; }
+  a { color: inherit; }
+  .accent { color: var(--accent); }
+
+  ::selection { background: var(--accent); color: #0c0d10; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(12,13,16,0.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 15px 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; }
+  .logo .dot { color: var(--accent); }
+  .logo .blip {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 10px var(--accent); animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+  .nav-links { display: flex; gap: 26px; font-size: 0.82rem; }
+  .nav-links a { color: var(--ink-dim); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    font-size: 0.8rem; font-weight: 700; padding: 9px 18px; border-radius: 100px;
+    background: var(--accent); color: #0c0d10; text-decoration: none;
+    transition: transform 0.15s var(--ease);
+  }
+  .nav-cta:hover { transform: translateY(-1px); }
+  @media (max-width: 680px) { .nav-links { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero { padding: 120px 0 96px; position: relative; }
+  .hero-mark {
+    position: absolute; right: -50px; top: 40px; font-size: 17rem;
+    font-family: 'Fraunces', serif; font-weight: 900;
+    color: var(--bg-soft); z-index: -1; user-select: none; line-height: 1;
+  }
+  @media (max-width: 880px) { .hero-mark { display: none; } }
+
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--accent-deep);
+    padding: 7px 15px; border-radius: 100px; margin-bottom: 32px;
+  }
+  .tag .dotmark { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+  .hero h1 { font-size: clamp(2.7rem, 8.4vw, 5.6rem); }
+  .hero h1 .outline { -webkit-text-stroke: 2px var(--accent); -webkit-text-fill-color: transparent; }
+
+  .hero .lead { margin-top: 30px; max-width: 540px; color: var(--ink-dim); font-size: 1.04rem; }
+
+  .cta-row { margin-top: 42px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.86rem;
+    padding: 16px 30px; border-radius: 100px; text-decoration: none;
+    transition: transform 0.16s var(--ease), box-shadow 0.16s var(--ease);
+    display: inline-block; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--accent); color: #0c0d10; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 34px -10px var(--accent); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-meta { margin-top: 50px; display: flex; gap: 36px; flex-wrap: wrap; }
+  .hero-meta div { font-size: 0.8rem; color: var(--ink-faint); }
+  .hero-meta div strong { display: block; font-family: 'Fraunces', serif; font-size: 1.5rem; color: var(--ink); font-weight: 900; }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    overflow: hidden; padding: 16px 0; background: var(--bg-soft);
+  }
+  .marquee-track {
+    display: flex; gap: 48px; white-space: nowrap;
+    animation: scroll 28s linear infinite; width: max-content;
+  }
+  .marquee span {
+    font-size: 0.84rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+    display: flex; align-items: center; gap: 48px;
+  }
+  .marquee span::after { content: "\2726"; color: var(--accent); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 86px 0; border-top: 1px solid var(--line); }
+  #services { border-top: none; }
+  .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--accent); }
+  .section-title { font-size: clamp(1.9rem, 4.4vw, 3rem); margin-bottom: 16px; }
+  .section-intro { color: var(--ink-dim); max-width: 540px; margin-bottom: 50px; }
+
+  /* ---------- SERVICES ---------- */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .grid-3 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 32px;
+    transition: border-color 0.25s, transform 0.25s var(--ease), background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .card:hover { border-color: var(--accent-deep); transform: translateY(-5px); background: var(--panel-hi); }
+  .card .num {
+    font-family: 'Fraunces', serif; font-weight: 900; font-size: 2rem;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  .card h3 { font-size: 1.18rem; margin-bottom: 9px; }
+  .card p { color: var(--ink-dim); font-size: 0.9rem; }
+  .card ul { list-style: none; margin-top: 14px; }
+  .card li { font-size: 0.8rem; color: var(--ink-faint); padding-left: 16px; position: relative; margin-bottom: 5px; }
+  .card li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent); }
+
+  /* ---------- WORK ---------- */
+  .work-item {
+    display: grid; grid-template-columns: 1fr 1.35fr; gap: 38px;
+    align-items: center; margin-bottom: 22px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 36px;
+    transition: border-color 0.25s;
+  }
+  .work-item:hover { border-color: var(--accent-deep); }
+  @media (max-width: 760px) { .work-item { grid-template-columns: 1fr; gap: 22px; } }
+  .work-visual {
+    aspect-ratio: 4 / 3; border-radius: 10px; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-weight: 900; font-size: 2.3rem;
+    border: 1px solid var(--line); overflow: hidden;
+  }
+  .work-visual::after {
+    content: ""; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .v1 { background: radial-gradient(circle at 30% 25%, #1d3a2e, #0c0d10); color: var(--accent); }
+  .v2 { background: radial-gradient(circle at 72% 28%, #34301d, #0c0d10); color: #ffd166; }
+  .v3 { background: radial-gradient(circle at 50% 72%, #1d2738, #0c0d10); color: #6fb3ff; }
+  .work-meta .kicker { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); }
+  .work-meta h3 { font-size: 1.55rem; margin: 9px 0 12px; }
+  .work-meta p { color: var(--ink-dim); font-size: 0.92rem; margin-bottom: 16px; }
+  .stack { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+  .chip {
+    font-size: 0.71rem; padding: 5px 12px; border-radius: 100px;
+    background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink-dim);
+  }
+  .work-link { font-size: 0.84rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+  .work-link:hover { text-decoration: underline; }
+
+  /* ---------- PROCESS ---------- */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
+  .step { border-left: 2px solid var(--accent); padding-left: 18px; }
+  .step .sn { font-family: 'Space Mono', monospace; color: var(--accent); font-size: 0.78rem; }
+  .step h4 { font-size: 1.12rem; margin: 5px 0 7px; }
+  .step p { font-size: 0.84rem; color: var(--ink-dim); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 44px; align-items: start; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-text p { color: var(--ink-dim); margin-bottom: 16px; }
+  .about-text p strong { color: var(--ink); }
+  .stat-box { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .stat { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+  .stat:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .stat .big { font-family: 'Fraunces', serif; font-weight: 900; font-size: 2.1rem; color: var(--accent); }
+  .stat .lbl { font-size: 0.82rem; color: var(--ink-dim); }
+
+  /* ---------- FAQ ---------- */
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+    padding: 22px 0; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.08rem; color: var(--ink);
+  }
+  .faq-q .ic { color: var(--accent); font-size: 1.4rem; transition: transform 0.25s var(--ease); flex-shrink: 0; margin-left: 16px; }
+  .faq-q.open .ic { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s var(--ease); }
+  .faq-a p { color: var(--ink-dim); font-size: 0.9rem; padding-bottom: 22px; }
+
+  /* ---------- CONTACT FORM ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: start; }
+  @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .contact-left h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 18px; }
+  .contact-left p { color: var(--ink-dim); margin-bottom: 24px; }
+  .contact-direct { font-size: 0.86rem; color: var(--ink-faint); }
+  .contact-direct a { color: var(--accent); text-decoration: none; }
+  .contact-direct a:hover { text-decoration: underline; }
+
+  .form-field { margin-bottom: 18px; }
+  .form-field label {
+    display: block; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-dim); margin-bottom: 8px;
+  }
+  .form-field input, .form-field textarea, .form-field select {
+    width: 100%; background: var(--bg-soft); border: 1px solid var(--line);
+    border-radius: 10px; padding: 14px 16px; color: var(--ink);
+    font-family: 'Space Mono', monospace; font-size: 0.9rem; transition: border-color 0.2s;
+  }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+    outline: none; border-color: var(--accent);
+  }
+  .form-field textarea { resize: vertical; min-height: 110px; }
+  .form-note { font-size: 0.74rem; color: var(--ink-faint); margin-top: 12px; }
+
+  /* ---------- FOOTER ---------- */
+  footer { border-top: 1px solid var(--line); padding: 34px 0; }
+  .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.78rem; color: var(--ink-faint); }
+  .footer-inner a { color: var(--ink-dim); text-decoration: none; }
+  .footer-inner a:hover { color: var(--accent); }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="blip"></span>built by jake<span class="dot">.</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a quote</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-mark">{ }</div>
+    <span class="tag reveal"><span class="dotmark"></span>Web design &middot; Perth, Western Australia</span>
+    <h1 class="reveal">
+      I build websites<br />
+      that <span class="outline">work hard</span><br />
+      for your business.
+    </h1>
+    <p class="lead reveal">
+      Fast, modern, mobile-friendly sites for small businesses around Perth.
+      No templates, no jargon, no agency price tag — just a site that brings
+      you customers.
+    </p>
+    <div class="cta-row reveal">
+      <a href="#contact" class="btn btn-primary">Start a project</a>
+      <a href="#work" class="btn btn-ghost">See my work</a>
+    </div>
+    <div class="hero-meta reveal">
+      <div><strong>10+</strong>Projects shipped</div>
+      <div><strong>100%</strong>Mobile-friendly</div>
+      <div><strong>Perth</strong>Local &amp; on your timezone</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Brand-new websites</span><span>Redesigns</span><span>Web apps</span>
+    <span>Booking forms</span><span>Fast &amp; mobile-friendly</span><span>Local Perth builder</span>
+    <span>Brand-new websites</span><span>Redesigns</span><span>Web apps</span>
+    <span>Booking forms</span><span>Fast &amp; mobile-friendly</span><span>Local Perth builder</span>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="eyebrow reveal">What I do</div>
+    <h2 class="section-title reveal">Built for what your business needs.</h2>
+    <p class="section-intro reveal">
+      Whether you're starting fresh or fixing a site that's letting you down,
+      here's how I can help.
+    </p>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="num">01</div>
+        <h3>Brand-new websites</h3>
+        <p>A complete site built from scratch — designed around your business and looking sharp on every device.</p>
+        <ul>
+          <li>Custom design, not a template</li>
+          <li>Mobile-first build</li>
+          <li>Set up to be found on Google</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="num">02</div>
+        <h3>Redesigns &amp; rescues</h3>
+        <p>Got a site that looks dated or loads slowly? I'll rebuild it modern, fast, and easy for customers to use.</p>
+        <ul>
+          <li>Faster load times</li>
+          <li>Modern, current look</li>
+          <li>Easier for customers to navigate</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="num">03</div>
+        <h3>Web apps &amp; tools</h3>
+        <p>Booking forms, dashboards, calculators — interactive tools that go beyond a normal website.</p>
+        <ul>
+          <li>Online booking &amp; enquiry forms</li>
+          <li>Custom interactive tools</li>
+          <li>Built to actually save you time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow reveal">Selected work</div>
+    <h2 class="section-title reveal">Projects I've shipped.</h2>
+    <p class="section-intro reveal">
+      Real things I've designed, built, and put online — start to finish, on my own.
+    </p>
+
+    <div class="work-item reveal">
+      <div class="work-visual v1">ScamSmart</div>
+      <div class="work-meta">
+        <span class="kicker">Live web platform</span>
+        <h3>ScamSmart</h3>
+        <p>An educational platform that teaches people to spot online scams — with interactive lessons, an AI assistant, and a gamified streak system. Designed, built, and deployed solo, with real users.</p>
+        <div class="stack">
+          <span class="chip">Next.js</span>
+          <span class="chip">Supabase</span>
+          <span class="chip">Stripe</span>
+          <span class="chip">Vercel</span>
+        </div>
+        <a class="work-link" href="https://scamsmart.click" target="_blank" rel="noopener">Visit scamsmart.click &rarr;</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-visual v2">Striker FC</div>
+      <div class="work-meta">
+        <span class="kicker">Browser game</span>
+        <h3>Striker FC</h3>
+        <p>A football career-management game that runs entirely in the browser, with a 3D match engine, league tables and a training-ground system. Proof I can build complex, interactive front-ends from the ground up.</p>
+        <div class="stack">
+          <span class="chip">Three.js</span>
+          <span class="chip">JavaScript</span>
+          <span class="chip">Game logic</span>
+        </div>
+        <a class="work-link" href="#contact">Ask for a demo &rarr;</a>
+      </div>
+    </div>
+
+    <div class="work-item reveal">
+      <div class="work-visual v3">BrassIQ</div>
+      <div class="work-meta">
+        <span class="kicker">Web app</span>
+        <h3>BrassIQ</h3>
+        <p>A trumpet-practice app that listens through the microphone and gives real-time pitch feedback, with structured lessons and achievements. A genuinely useful tool, not just a static page.</p>
+        <div class="stack">
+          <span class="chip">Next.js</span>
+          <span class="chip">Audio / pitch detection</span>
+        </div>
+        <a class="work-link" href="#contact">Ask for a demo &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section id="process">
+  <div class="wrap">
+    <div class="eyebrow reveal">How it works</div>
+    <h2 class="section-title reveal">Simple, with no surprises.</h2>
+    <p class="section-intro reveal">
+      You don't need to know anything technical. I handle the hard part — you
+      just tell me about your business.
+    </p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="sn">STEP 01</div>
+        <h4>Chat</h4>
+        <p>We talk about your business and what you want the site to do. Free, no commitment.</p>
+      </div>
+      <div class="step reveal">
+        <div class="sn">STEP 02</div>
+        <h4>Design</h4>
+        <p>I send you a layout to look at and approve before any code gets written.</p>
+      </div>
+      <div class="step reveal">
+        <div class="sn">STEP 03</div>
+        <h4>Build</h4>
+        <p>I build the site properly, and keep you updated along the way.</p>
+      </div>
+      <div class="step reveal">
+        <div class="sn">STEP 04</div>
+        <h4>Launch</h4>
+        <p>Your site goes live — and I'm still here if you need changes later.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="eyebrow reveal">About</div>
+        <h2 class="section-title reveal">G'day — I'm Jake.</h2>
+        <p class="reveal">
+          I'm a Perth-based developer who builds websites and web apps. I taught
+          myself by <strong>shipping real projects</strong> — not just tutorials,
+          but live platforms with real users behind them.
+        </p>
+        <p class="reveal">
+          Working with me means working directly with the person actually building
+          your site. No middlemen, no account managers, no being passed around —
+          just <strong>quick replies and a fair price</strong>.
+        </p>
+        <p class="reveal">
+          Being local matters too. I understand Perth businesses and Perth
+          customers, and I'm on your timezone when you need to talk.
+        </p>
+        <p class="reveal">
+          If you've got an idea — even a rough one — I'd love to hear it.
+        </p>
+      </div>
+      <div class="stat-box reveal">
+        <div class="stat">
+          <div class="big">10+</div>
+          <div class="lbl">Projects designed &amp; built end-to-end</div>
+        </div>
+        <div class="stat">
+          <div class="big">100%</div>
+          <div class="lbl">Mobile-friendly — works on every phone</div>
+        </div>
+        <div class="stat">
+          <div class="big">1-on-1</div>
+          <div class="lbl">You deal directly with your developer</div>
+        </div>
+        <div class="stat">
+          <div class="big">Perth</div>
+          <div class="lbl">Local builder, same timezone, real conversations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow reveal">Questions</div>
+    <h2 class="section-title reveal">Good things to know.</h2>
+    <div style="margin-top: 14px;">
+      <div class="faq-item reveal">
+        <button class="faq-q">How much does a website cost?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Every project is different, so I price each one after we chat. A simple site for a small business is very affordable — far less than a big agency would charge. I'll always give you a clear quote upfront, with no hidden costs.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How long does it take?<span class="ic">+</span></button>
+        <div class="faq-a"><p>A straightforward small-business site usually takes a couple of weeks from our first chat to going live. More complex sites or web apps take longer — I'll give you a realistic timeline before we start.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do I need to be technical?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Not at all. That's my job. You tell me about your business and what you want; I handle the design, the code, the hosting and the technical setup.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can you fix or update my existing site?<span class="ic">+</span></button>
+        <div class="faq-a"><p>Yes. If your current site looks dated, loads slowly, or isn't working well on phones, I can either improve it or rebuild it properly. Get in touch and tell me what's bugging you about it.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">What happens after the site is live?<span class="ic">+</span></button>
+        <div class="faq-a"><p>I don't disappear. If you need changes, updates, or help down the track, just message me. We can sort out ongoing support if you'd like it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="eyebrow reveal">Get in touch</div>
+        <h2 class="reveal">Let's build something.</h2>
+        <p class="reveal">
+          Tell me a bit about your business and what you need. The first chat is
+          always free, with no commitment.
+        </p>
+        <p class="contact-direct reveal">
+          Prefer email? Reach me directly at<br />
+          <a href="mailto:contact@builtbyjake.site">contact@builtbyjake.site</a>
+        </p>
+      </div>
+      <div class="reveal">
+        <div class="form-field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" placeholder="Jane Smith" />
+        </div>
+        <div class="form-field">
+          <label for="email">Your email</label>
+          <input type="email" id="email" placeholder="jane@business.com.au" />
+        </div>
+        <div class="form-field">
+          <label for="ptype">What do you need?</label>
+          <select id="ptype">
+            <option>A brand-new website</option>
+            <option>A redesign of my current site</option>
+            <option>A web app or online tool</option>
+            <option>Not sure yet — let's chat</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="msg">Tell me about it</label>
+          <textarea id="msg" placeholder="A short bit about your business and what you're after..."></textarea>
+        </div>
+        <button class="btn btn-primary" style="width:100%;" onclick="sendEnquiry()">Send enquiry &rarr;</button>
+        <p class="form-note">This opens your email app with the message ready to send. Quick and easy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>&copy; <span id="year"></span> Built by Jake &middot; Perth, Western Australia</span>
+    <span><a href="#services">Top &uarr;</a> &middot; builtbyjake.site</span>
+  </div>
+</footer>
+
+<script>
+  // current year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ----- scroll reveal -----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 3) * 0.07 + 's';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ----- FAQ accordion -----
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ans = btn.nextElementSibling;
+      const open = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(b => {
+        b.classList.remove('open');
+        b.nextElementSibling.style.maxHeight = null;
+      });
+      if (!open) {
+        btn.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // ----- contact form: builds a pre-filled email -----
+  function sendEnquiry() {
+    const name  = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const ptype = document.getElementById('ptype').value;
+    const msg   = document.getElementById('msg').value.trim();
+
+    if (!name || !email || !msg) {
+      alert('Please fill in your name, email and a short message.');
+      return;
+    }
+
+    const subject = 'New enquiry from builtbyjake.site - ' + name;
+    const body =
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Project type: ' + ptype + '\n\n' +
+      'Message:\n' + msg;
+
+    window.location.href = 'mailto:contact@builtbyjake.site'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body='    + encodeURIComponent(body);
+  }
+</script>
+
+</body>
+</html>
