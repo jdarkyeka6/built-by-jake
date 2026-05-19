@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demos — Built by Jake</title>
+<meta name="description" content="Concept website designs by Built by Jake — sample sites for bakeries, cafés, tradies, personal trainers and salons in Perth." />
+<meta name="theme-color" content="#0c0d10" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0c0d10;
+    --bg-soft: #141519;
+    --panel: #181a1f;
+    --panel-hi: #1f2229;
+    --ink: #f4f3ee;
+    --ink-dim: #9a9b97;
+    --ink-faint: #6b6c69;
+    --accent: #d6ff4b;
+    --accent-deep: #b2d92e;
+    --line: #2a2c32;
+    --radius: 14px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: 'Space Mono', monospace; line-height: 1.65;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+  h1, h2, h3 { font-family: 'Fraunces', serif; font-weight: 900; line-height: 1.05; letter-spacing: -0.02em; }
+  a { color: inherit; }
+  ::selection { background: var(--accent); color: #0c0d10; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px);
+    background: rgba(12,13,16,0.82); border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { max-width: 1080px; margin: 0 auto; padding: 15px 28px; display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo .dot { color: var(--accent); }
+  .logo .blip { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .nav-cta { font-size: 0.8rem; font-weight: 700; padding: 9px 18px; border-radius: 100px; background: var(--accent); color: #0c0d10; text-decoration: none; }
+
+  /* HEADER */
+  .head { padding: 80px 0 40px; text-align: center; }
+  .head .eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 16px;
+  }
+  .head h1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+  .head p { margin: 20px auto 0; max-width: 520px; color: var(--ink-dim); font-size: 1rem; }
+
+  /* TABS */
+  .tabs {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    padding: 36px 0 8px;
+  }
+  .tab {
+    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.84rem;
+    padding: 11px 22px; border-radius: 100px; cursor: pointer;
+    background: var(--panel); border: 1px solid var(--line); color: var(--ink-dim);
+    transition: all 0.2s var(--ease);
+  }
+  .tab:hover { border-color: var(--accent-deep); color: var(--ink); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #0c0d10; }
+
+  /* PANELS */
+  .panels { padding: 30px 0 90px; }
+  .panel { display: none; }
+  .panel.active { display: block; animation: fade 0.4s var(--ease); }
+  @keyframes fade { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+
+  .preview {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius); overflow: hidden;
+    display: grid; grid-template-columns: 1.1fr 1fr;
+  }
+  @media (max-width: 760px) { .preview { grid-template-columns: 1fr; } }
+
+  /* mock browser visual */
+  .mock { padding: 30px; display: flex; flex-direction: column; }
+  .mock-bar { display: flex; gap: 6px; margin-bottom: 14px; }
+  .mock-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .mock-screen {
+    flex: 1; border-radius: 10px; min-height: 280px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 30px; position: relative; overflow: hidden;
+  }
+  .mock-screen .big-ic { font-size: 3.4rem; margin-bottom: 12px; }
+  .mock-screen .m-name { font-family: 'Fraunces', serif; font-weight: 900; font-size: 1.8rem; }
+  .mock-screen .m-tag { font-size: 0.82rem; margin-top: 6px; opacity: 0.85; }
+
+  /* per-business mock palettes */
+  .m-bakery { background: linear-gradient(160deg, #c98f52, #6e4527); color: #f6efe4; }
+  .m-cafe   { background: linear-gradient(160deg, #10322e, #0a221f); color: #f4f1e8; }
+  .m-cafe .m-name { color: #d97742; }
+  .m-tradie { background: linear-gradient(160deg, #0e2a47, #081d33); color: #fff; }
+  .m-tradie .m-name { color: #ff7a1a; }
+  .m-trainer { background: linear-gradient(160deg, #16171a, #0d0d0f); color: #f1f1ee; }
+  .m-trainer .m-name { color: #c6f042; }
+  .m-salon  { background: linear-gradient(160deg, #b9817b, #2a2226); color: #f3e7e4; }
+
+  /* info side */
+  .info { padding: 36px; border-left: 1px solid var(--line); display: flex; flex-direction: column; }
+  @media (max-width: 760px) { .info { border-left: none; border-top: 1px solid var(--line); } }
+  .info .kicker { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
+  .info h2 { font-size: 1.7rem; margin: 8px 0 4px; }
+  .info .biz-type { font-size: 0.82rem; color: var(--ink-faint); margin-bottom: 14px; }
+  .info p.desc { color: var(--ink-dim); font-size: 0.9rem; margin-bottom: 16px; }
+  .info ul { list-style: none; margin-bottom: 22px; }
+  .info li { font-size: 0.84rem; color: var(--ink-dim); padding: 6px 0 6px 20px; position: relative; }
+  .info li::before { content: "\2192"; position: absolute; left: 0; color: var(--accent); }
+  .info .spacer { flex: 1; }
+  .view-btn {
+    display: inline-block; text-align: center; background: var(--accent); color: #0c0d10;
+    font-weight: 700; font-size: 0.86rem; padding: 14px 24px; border-radius: 100px;
+    text-decoration: none; transition: transform 0.16s var(--ease);
+  }
+  .view-btn:hover { transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--line); padding: 34px 0; }
+  .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 0.78rem; color: var(--ink-faint); }
+  .footer-inner a { color: var(--ink-dim); text-decoration: none; }
+  .footer-inner a:hover { color: var(--accent); }
+
+  .note {
+    text-align: center; font-size: 0.8rem; color: var(--ink-faint);
+    max-width: 560px; margin: 0 auto; padding-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="blip"></span>built by jake<span class="dot">.</span></a>
+    <a href="index.html#contact" class="nav-cta">Get a quote</a>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <div class="eyebrow">Concept designs</div>
+    <h1>Sample sites for<br />real business types.</h1>
+    <p>
+      These are concept designs — fictional businesses I built to show how a
+      site could look for different trades. Pick a business type below and take
+      a look.
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-tab="bakery">🥖 Bakery</button>
+    <button class="tab" data-tab="cafe">☕ Café</button>
+    <button class="tab" data-tab="tradie">🔧 Tradie</button>
+    <button class="tab" data-tab="trainer">🏋️ Personal Trainer</button>
+    <button class="tab" data-tab="salon">💇 Salon</button>
+  </div>
+</div>
+
+<div class="wrap panels">
+
+  <!-- BAKERY -->
+  <div class="panel active" data-panel="bakery">
+    <div class="preview">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i></div>
+        <div class="mock-screen m-bakery">
+          <div class="big-ic">🥖</div>
+          <div class="m-name">Crumb &amp; Co.</div>
+          <div class="m-tag">Artisan bakery · Perth WA</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="kicker">Concept · Bakery</div>
+        <h2>Crumb &amp; Co.</h2>
+        <div class="biz-type">For bakeries, patisseries &amp; cake makers</div>
+        <p class="desc">A warm, appetising design that puts the product front and centre — built to make someone hungry and tell them where to go.</p>
+        <ul>
+          <li>Product menu with pricing</li>
+          <li>Story &amp; opening hours</li>
+          <li>Custom cake ordering call-to-action</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="view-btn" href="bakery.html" target="_blank" rel="noopener">View full demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAFE -->
+  <div class="panel" data-panel="cafe">
+    <div class="preview">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i></div>
+        <div class="mock-screen m-cafe">
+          <div class="big-ic">☕</div>
+          <div class="m-name">Northbound Coffee</div>
+          <div class="m-tag">Specialty café · Perth WA</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="kicker">Concept · Café</div>
+        <h2>Northbound Coffee</h2>
+        <div class="biz-type">For cafés, coffee shops &amp; brunch spots</div>
+        <p class="desc">A cool, modern design with a proper menu layout and an inviting feel — made to bring people through the door.</p>
+        <ul>
+          <li>Full two-column food &amp; drinks menu</li>
+          <li>Opening hours &amp; location</li>
+          <li>"Why choose us" highlights</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="view-btn" href="cafe.html" target="_blank" rel="noopener">View full demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRADIE -->
+  <div class="panel" data-panel="tradie">
+    <div class="preview">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i></div>
+        <div class="mock-screen m-tradie">
+          <div class="big-ic">🔧</div>
+          <div class="m-name">Hartley Plumbing</div>
+          <div class="m-tag">Plumbing &amp; gas · Perth WA</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="kicker">Concept · Tradie</div>
+        <h2>Hartley Plumbing &amp; Gas</h2>
+        <div class="biz-type">For plumbers, electricians &amp; all trades</div>
+        <p class="desc">A bold, trustworthy design built to do one job: get the customer to call. Phone numbers and a quote form everywhere.</p>
+        <ul>
+          <li>Quote-request form in the hero</li>
+          <li>Click-to-call &amp; emergency call-out</li>
+          <li>Services, trust badges &amp; guarantee</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="view-btn" href="tradie.html" target="_blank" rel="noopener">View full demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRAINER -->
+  <div class="panel" data-panel="trainer">
+    <div class="preview">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i></div>
+        <div class="mock-screen m-trainer">
+          <div class="big-ic">🏋️</div>
+          <div class="m-name">Forge Athletic</div>
+          <div class="m-tag">Personal training · Perth WA</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="kicker">Concept · Personal Trainer</div>
+        <h2>Forge Athletic</h2>
+        <div class="biz-type">For PTs, gyms &amp; fitness coaches</div>
+        <p class="desc">A high-energy design with clear pricing tiers — built to turn visitors into a booked free session.</p>
+        <ul>
+          <li>Three-tier pricing table</li>
+          <li>Coach bio &amp; credibility stats</li>
+          <li>"First session free" call-to-action</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="view-btn" href="trainer.html" target="_blank" rel="noopener">View full demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALON -->
+  <div class="panel" data-panel="salon">
+    <div class="preview">
+      <div class="mock">
+        <div class="mock-bar"><i></i><i></i><i></i></div>
+        <div class="mock-screen m-salon">
+          <div class="big-ic">💇</div>
+          <div class="m-name">Maison Belle</div>
+          <div class="m-tag">Hair &amp; beauty · Perth WA</div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="kicker">Concept · Salon</div>
+        <h2>Maison Belle</h2>
+        <div class="biz-type">For hair salons, beauty &amp; nail studios</div>
+        <p class="desc">An elegant, calming design that sells the experience — refined, unhurried, and easy to book.</p>
+        <ul>
+          <li>Hair &amp; beauty services menu</li>
+          <li>Salon experience section</li>
+          <li>Booking call-to-action &amp; hours</li>
+        </ul>
+        <div class="spacer"></div>
+        <a class="view-btn" href="salon.html" target="_blank" rel="noopener">View full demo →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="note">
+  Every demo above is a fictional business, created to show design range.
+  Your real site would be built around your actual brand, content and photos.
+</p>
+
+<footer style="margin-top:50px;">
+  <div class="wrap footer-inner">
+    <span>&copy; <span id="year"></span> Built by Jake · Perth, Western Australia</span>
+    <span><a href="index.html">← Back to home</a> · builtbyjake.site</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector('[data-panel="' + target + '"]').classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maison Belle — Hair &amp; Beauty Salon, Perth</title>
+<meta name="description" content="Maison Belle — a hair and beauty salon in Perth. Cuts, colour, styling and beauty treatments in a calm, considered space." />
+<meta name="theme-color" content="#2a2226" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --plum: #2a2226;
+    --plum-deep: #1c1619;
+    --blush: #f3e7e4;
+    --blush-deep: #e6d2cd;
+    --rose: #b9817b;
+    --rose-deep: #9c645e;
+    --sand: #faf6f3;
+    --ink: #322a2d;
+    --mute: #8a7d80;
+    --gold: #c2a268;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--sand); color: var(--ink);
+    font-family: 'Jost', sans-serif; font-weight: 400; line-height: 1.75;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.12; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 30px; }
+  ::selection { background: var(--rose); color: #fff; }
+
+  .ico { width: 1em; height: 1em; display: inline-block; vertical-align: -0.12em; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  .concept-banner {
+    background: var(--plum-deep); color: var(--blush);
+    text-align: center; font-size: 0.73rem; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 9px 16px;
+  }
+  .concept-banner a { color: var(--gold); text-decoration: underline; }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250,246,243,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--blush-deep);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 20px 30px; max-width: 1080px; margin: 0 auto; }
+  .brand { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 500; letter-spacing: 0.04em; }
+  .brand em { font-style: italic; color: var(--rose); }
+  .nav-links { display: flex; gap: 32px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .nav-links a { text-decoration: none; color: var(--mute); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--plum); color: var(--blush); padding: 11px 22px;
+    border-radius: 100px; text-decoration: none; font-size: 0.78rem;
+    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  @media (max-width: 720px) { .nav-links { display: none; } }
+
+  .imgph {
+    position: relative; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    background:
+      repeating-linear-gradient(45deg, rgba(185,129,123,0.08) 0 12px, transparent 12px 24px),
+      var(--blush);
+    border: 1.5px dashed var(--rose); color: var(--plum);
+    border-radius: 16px; padding: 26px; gap: 9px;
+  }
+  .imgph .ph-ic { width: 40px; height: 40px; stroke: var(--rose); fill: none; stroke-width: 1.3; }
+  .imgph .ph-label { font-family: 'Jost', sans-serif; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.03em; }
+  .imgph .ph-sub { font-size: 0.72rem; color: var(--rose-deep); max-width: 210px; }
+
+  .hero { position: relative; padding: 96px 0 104px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -100px; left: -100px;
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle, var(--blush-deep), transparent 70%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 52px; align-items: center; position: relative; z-index: 2; }
+  @media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; gap: 38px; } }
+  .hero .eyebrow {
+    font-size: 0.76rem; letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--rose); font-weight: 600; margin-bottom: 20px;
+  }
+  .hero h1 { font-size: clamp(3rem, 7vw, 5rem); }
+  .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero p { margin-top: 22px; font-size: 1.06rem; color: var(--mute); max-width: 410px; }
+  .hero-cta { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    padding: 15px 32px; border-radius: 100px; text-decoration: none;
+    font-weight: 500; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: transform 0.16s var(--ease); display: inline-flex; align-items: center; gap: 9px;
+  }
+  .btn-solid { background: var(--plum); color: var(--blush); }
+  .btn-solid:hover { transform: translateY(-2px); }
+  .btn-line { border: 1px solid var(--plum); color: var(--plum); }
+  .btn-line:hover { background: var(--plum); color: var(--blush); }
+  .hero-img { aspect-ratio: 4/5; border-radius: 260px 260px 20px 20px; box-shadow: 0 34px 64px -32px rgba(42,34,38,0.55); }
+
+  .strip { background: var(--plum); color: var(--blush); padding: 20px 0; }
+  .strip-inner { display: flex; justify-content: center; gap: 44px; flex-wrap: wrap; font-size: 0.82rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .strip-inner span { display: flex; align-items: center; gap: 9px; }
+  .strip-inner .ico { color: var(--gold); }
+
+  section { padding: 92px 0; }
+  .sec-head { text-align: center; max-width: 540px; margin: 0 auto 56px; }
+  .sec-head .eyebrow { font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); font-weight: 600; }
+  .sec-head h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 12px 0 14px; }
+  .sec-head p { color: var(--mute); }
+
+  /* SERVICES — now with a photo alongside */
+  .svc-layout { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 44px; align-items: start; }
+  @media (max-width: 800px) { .svc-layout { grid-template-columns: 1fr; } }
+  .svc-photo { aspect-ratio: 3/4; position: sticky; top: 100px; }
+  @media (max-width: 800px) { .svc-photo { position: static; aspect-ratio: 16/10; } }
+  .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  @media (max-width: 560px) { .svc-grid { grid-template-columns: 1fr; gap: 28px; } }
+  .svc-block h3 { font-size: 1.7rem; margin-bottom: 6px; display: flex; align-items: baseline; gap: 12px; }
+  .svc-block h3::after { content: ""; flex: 1; height: 1px; background: var(--blush-deep); }
+  .svc-block .blurb { font-size: 0.86rem; color: var(--mute); margin-bottom: 16px; font-style: italic; }
+  .svc-line { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px dotted var(--blush-deep); }
+  .svc-line .nm { font-weight: 500; }
+  .svc-line .ds { font-size: 0.82rem; color: var(--mute); }
+  .svc-line .pr { font-family: 'Playfair Display', serif; color: var(--rose-deep); white-space: nowrap; font-size: 1.05rem; }
+
+  .exp { background: var(--blush); }
+  .exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  @media (max-width: 760px) { .exp-grid { grid-template-columns: 1fr; } }
+  .exp-card { text-align: center; padding: 30px 22px; }
+  .exp-card .ic {
+    width: 62px; height: 62px; border-radius: 50%; background: var(--sand);
+    border: 1px solid var(--blush-deep); display: flex; align-items: center;
+    justify-content: center; margin: 0 auto 16px; color: var(--rose-deep);
+  }
+  .exp-card .ic .ico { width: 26px; height: 26px; }
+  .exp-card h3 { font-size: 1.4rem; margin-bottom: 7px; }
+  .exp-card p { font-size: 0.9rem; color: var(--mute); }
+
+  .quote { text-align: center; }
+  .quote blockquote {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: clamp(1.5rem, 3.6vw, 2.3rem); line-height: 1.4; max-width: 720px;
+    margin: 0 auto 18px; color: var(--plum);
+  }
+  .quote .who { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); }
+  .quote .stars { color: var(--gold); margin-bottom: 18px; display: flex; gap: 5px; justify-content: center; }
+  .quote .stars .ico { width: 20px; height: 20px; fill: var(--gold); stroke: var(--gold); }
+
+  .book { background: var(--plum); color: var(--blush); text-align: center; }
+  .book h2 { font-size: clamp(2.2rem, 5.5vw, 3.4rem); margin-bottom: 12px; }
+  .book h2 em { font-style: italic; color: var(--gold); }
+  .book p { color: var(--blush-deep); margin-bottom: 26px; }
+  .book .hours { font-size: 0.9rem; color: var(--blush-deep); margin-top: 22px; }
+  .btn-gold { background: var(--gold); color: var(--plum-deep); }
+  .btn-gold:hover { transform: translateY(-2px); }
+
+  footer { background: var(--plum-deep); color: var(--blush-deep); padding: 52px 0 28px; }
+  .foot-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 28px; margin-bottom: 34px; }
+  .foot-brand { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--blush); }
+  .foot-brand em { font-style: italic; color: var(--rose); }
+  .foot-col h4 { font-size: 0.76rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 11px; color: var(--gold); }
+  .foot-col p { font-size: 0.88rem; }
+  .foot-bottom { border-top: 1px solid rgba(243,231,228,0.12); padding-top: 20px; font-size: 0.78rem; opacity: 0.7; text-align: center; }
+  .foot-bottom a { color: var(--gold); }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="concept-banner">
+  Concept design &middot; a sample site by <a href="https://builtbyjake.site">builtbyjake.site</a> &middot; this salon is fictional
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Maison <em>Belle</em></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#experience">The Salon</a>
+      <a href="#book">Book</a>
+    </div>
+    <a href="#book" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Hair &amp; beauty &middot; Perth, WA</div>
+      <h1>Your moment to <em>simply</em> be looked after.</h1>
+      <p>A calm, considered salon for hair and beauty — where you're never rushed, and you always leave feeling like yourself, elevated.</p>
+      <div class="hero-cta">
+        <a href="#book" class="btn btn-solid">Book an appointment</a>
+        <a href="#services" class="btn btn-line">View services</a>
+      </div>
+    </div>
+    <div class="hero-img imgph reveal">
+      <svg class="ph-ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="M21 15l-5-5L5 21"/></svg>
+      <div class="ph-label">Your hero photo here</div>
+      <div class="ph-sub">An elegant shot of your salon space or a finished look</div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span><svg class="ico" viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0012 0V3M6 21v-6a6 6 0 0112 0v6"/></svg> Expert colour</span>
+    <span><svg class="ico" viewBox="0 0 24 24"><path d="M12 3a6 6 0 00-6 6c0 4 6 12 6 12s6-8 6-12a6 6 0 00-6-6z"/></svg> A calm, unhurried space</span>
+    <span><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Open late Thursdays</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Our menu</div>
+      <h2>Services &amp; pricing</h2>
+      <p>A guide to our most-loved treatments. Final pricing is confirmed at your consultation.</p>
+    </div>
+    <div class="svc-layout">
+      <div class="svc-photo imgph reveal">
+        <svg class="ph-ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div class="ph-label">Photo of your work</div>
+        <div class="ph-sub">A beautiful colour or styling result</div>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-block reveal">
+          <h3>Hair</h3>
+          <p class="blurb">Cut, colour and styling by experienced stylists.</p>
+          <div class="svc-line"><div><div class="nm">Cut &amp; Style</div><div class="ds">Consultation, cut, blow-dry</div></div><div class="pr">$75+</div></div>
+          <div class="svc-line"><div><div class="nm">Full Colour</div><div class="ds">Single-process, all-over</div></div><div class="pr">$130+</div></div>
+          <div class="svc-line"><div><div class="nm">Balayage</div><div class="ds">Hand-painted, natural blend</div></div><div class="pr">$210+</div></div>
+          <div class="svc-line"><div><div class="nm">Blow-Dry &amp; Style</div><div class="ds">For events or just because</div></div><div class="pr">$55+</div></div>
+          <div class="svc-line"><div><div class="nm">Treatment</div><div class="ds">Repair &amp; gloss add-on</div></div><div class="pr">$40+</div></div>
+        </div>
+        <div class="svc-block reveal">
+          <h3>Beauty</h3>
+          <p class="blurb">Considered treatments for skin, brows and nails.</p>
+          <div class="svc-line"><div><div class="nm">Facial</div><div class="ds">Tailored to your skin, 60 min</div></div><div class="pr">$95+</div></div>
+          <div class="svc-line"><div><div class="nm">Brow Shape &amp; Tint</div><div class="ds">Shape, tint, finish</div></div><div class="pr">$45+</div></div>
+          <div class="svc-line"><div><div class="nm">Lash Lift</div><div class="ds">Lifted, tinted, low-maintenance</div></div><div class="pr">$85+</div></div>
+          <div class="svc-line"><div><div class="nm">Manicure</div><div class="ds">Classic or gel finish</div></div><div class="pr">$50+</div></div>
+          <div class="svc-line"><div><div class="nm">Pedicure</div><div class="ds">A proper, relaxing reset</div></div><div class="pr">$65+</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">The Maison Belle way</div>
+      <h2>More than an appointment</h2>
+      <p>We built this salon around how you should <em>feel</em> — not just how you look when you leave.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3c0 4-3 5-3 9a3 3 0 006 0c0-4-3-5-3-9z"/><path d="M9 21h6"/></svg></div>
+        <h3>A calm space</h3>
+        <p>No noise, no rush. Soft light, good coffee, and time that's genuinely yours.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.5 15.5M20 20L8.5 8.5"/></svg></div>
+        <h3>Skilled hands</h3>
+        <p>Experienced stylists and therapists who listen first and tailor everything to you.</p>
+      </div>
+      <div class="exp-card reveal">
+        <div class="ic"><svg class="ico" viewBox="0 0 24 24"><path d="M12 21c5-3 8-7 8-12a8 8 0 00-16 0c0 5 3 9 8 12z"/><path d="M12 12c0-3 2-5 4-5M12 12c0-3-2-5-4-5"/></svg></div>
+        <h3>Considered products</h3>
+        <p>Quality, kinder products chosen for results — and gentle on you and your hair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="wrap">
+    <div class="stars reveal">
+      <svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+      <svg class="ico" viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+    </div>
+    <blockquote class="reveal">"The most relaxed I've ever felt at a salon — and my colour has never looked better. I won't go anywhere else now."</blockquote>
+    <div class="who reveal">— a very happy regular</div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section id="book" class="book">
+  <div class="wrap">
+    <h2 class="reveal">Ready for a little <em>time</em> for you?</h2>
+    <p class="reveal">Book online in a moment, or call the salon and we'll find a time that suits.</p>
+    <div class="reveal" style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+      <a href="#" class="btn btn-gold">Book online</a>
+      <a href="tel:+61890000000" class="btn btn-line" style="border-color:var(--blush); color:var(--blush);">Call (08) 9000 0000</a>
+    </div>
+    <div class="hours reveal">
+      Tue–Wed 9–5 &middot; Thu 9–8 &middot; Fri 9–5 &middot; Sat 8–4 &middot; Closed Sun &amp; Mon
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Maison <em>Belle</em></div>
+        <p style="font-size:0.9rem; max-width:250px; margin-top:8px;">A hair &amp; beauty salon in the heart of Perth.</p>
+      </div>
+      <div class="foot-col"><h4>Visit</h4><p>5 Rosewood Arcade<br />Perth WA 6000</p></div>
+      <div class="foot-col"><h4>Hours</h4><p>Tue–Sat<br />Late night Thursdays</p></div>
+      <div class="foot-col"><h4>Contact</h4><p>(08) 9000 0000<br />hello@maisonbelle.example</p></div>
+    </div>
+    <div class="foot-bottom">
+      This is a concept design — a sample site created by <a href="https://builtbyjake.site">builtbyjake.site</a>. Maison Belle is not a real business.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 3) * 0.08 + 's';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

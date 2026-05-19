@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Crumb &amp; Co. — Artisan Bakery, Perth WA</title>
+<meta name="description" content="Crumb & Co. — a small-batch artisan bakery in Perth. Sourdough, pastries and cakes baked fresh every morning." />
+<meta name="theme-color" content="#3a2618" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --cream: #f6efe4;
+    --cream-deep: #ece0cc;
+    --crust: #3a2618;
+    --crust-soft: #5a4233;
+    --rye: #8a6b4f;
+    --jam: #b4452f;
+    --ink: #2a1d12;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; }
+  a { color: inherit; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+  ::selection { background: var(--jam); color: var(--cream); }
+
+  /* ----- CONCEPT BANNER ----- */
+  .concept-banner {
+    background: var(--crust); color: var(--cream);
+    text-align: center; font-size: 0.74rem; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 9px 16px;
+  }
+  .concept-banner a { color: #f0c98a; text-decoration: underline; }
+
+  /* ----- NAV ----- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(246,239,228,0.9); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cream-deep);
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 30px; max-width: 1100px; margin: 0 auto; }
+  .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 0.02em; }
+  .brand .amp { color: var(--jam); font-style: italic; }
+  .nav-links { display: flex; gap: 30px; font-size: 0.86rem; font-weight: 500; }
+  .nav-links a { text-decoration: none; color: var(--crust-soft); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--jam); }
+  .nav-cta {
+    background: var(--crust); color: var(--cream); padding: 10px 20px;
+    border-radius: 100px; text-decoration: none; font-size: 0.82rem; font-weight: 700;
+  }
+  @media (max-width: 700px) { .nav-links { display: none; } }
+
+  /* ----- HERO ----- */
+  .hero { position: relative; padding: 90px 0 100px; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; top: -120px; right: -120px;
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle, var(--cream-deep), transparent 70%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; position: relative; }
+  @media (max-width: 800px) { .hero-grid { grid-template-columns: 1fr; gap: 36px; } }
+  .hero .eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--jam); font-weight: 700; margin-bottom: 18px;
+  }
+  .hero h1 { font-size: clamp(2.9rem, 7vw, 4.8rem); }
+  .hero h1 em { color: var(--jam); }
+  .hero p { margin-top: 22px; font-size: 1.08rem; color: var(--crust-soft); max-width: 440px; }
+  .hero-cta { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    padding: 15px 30px; border-radius: 100px; text-decoration: none;
+    font-weight: 700; font-size: 0.88rem; transition: transform 0.16s var(--ease);
+    display: inline-block;
+  }
+  .btn-solid { background: var(--crust); color: var(--cream); }
+  .btn-solid:hover { transform: translateY(-2px); }
+  .btn-line { border: 1.5px solid var(--crust); color: var(--crust); }
+  .btn-line:hover { background: var(--crust); color: var(--cream); }
+
+  .hero-img {
+    aspect-ratio: 4/5; border-radius: 200px 200px 18px 18px;
+    background:
+      radial-gradient(circle at 50% 32%, #e8b77a, transparent 55%),
+      linear-gradient(160deg, #c98f52, #6e4527);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 30px; position: relative; box-shadow: 0 30px 60px -30px rgba(58,38,24,0.6);
+  }
+  .hero-img span {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    color: var(--cream); font-size: 1.5rem; opacity: 0.85;
+  }
+  .hero-img::before {
+    content: "🥖"; position: absolute; top: 38%; left: 50%;
+    transform: translate(-50%,-50%); font-size: 6rem;
+    filter: drop-shadow(0 8px 14px rgba(0,0,0,0.3));
+  }
+
+  /* ----- STRIP ----- */
+  .strip {
+    background: var(--crust); color: var(--cream);
+    padding: 22px 0; text-align: center;
+  }
+  .strip-inner { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; font-size: 0.9rem; }
+  .strip-inner span em { color: #f0c98a; font-style: normal; font-weight: 700; }
+
+  /* ----- SECTION ----- */
+  section { padding: 90px 0; }
+  .sec-head { text-align: center; max-width: 560px; margin: 0 auto 56px; }
+  .sec-head .eyebrow {
+    font-size: 0.76rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--jam); font-weight: 700;
+  }
+  .sec-head h2 { font-size: clamp(2.2rem, 5vw, 3.2rem); margin: 10px 0 14px; }
+  .sec-head p { color: var(--crust-soft); }
+
+  /* ----- MENU ----- */
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  @media (max-width: 780px) { .menu-grid { grid-template-columns: 1fr; } }
+  .menu-card {
+    background: #fff; border-radius: 18px; overflow: hidden;
+    border: 1px solid var(--cream-deep);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s;
+  }
+  .menu-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -26px rgba(58,38,24,0.5); }
+  .menu-thumb { height: 170px; display: flex; align-items: center; justify-content: center; font-size: 3.4rem; }
+  .mt1 { background: linear-gradient(150deg, #e9c590, #cf9b5e); }
+  .mt2 { background: linear-gradient(150deg, #e3a98f, #c06a4a); }
+  .mt3 { background: linear-gradient(150deg, #d8c6a4, #a98d5f); }
+  .mt4 { background: linear-gradient(150deg, #efd0a0, #d2a05f); }
+  .mt5 { background: linear-gradient(150deg, #e8b6a0, #bd7256); }
+  .mt6 { background: linear-gradient(150deg, #dcc9a8, #b39a6a); }
+  .menu-body { padding: 22px 24px 26px; }
+  .menu-body h3 { font-size: 1.5rem; }
+  .menu-body .price { color: var(--jam); font-weight: 700; font-family: 'Manrope', sans-serif; font-size: 0.95rem; }
+  .menu-body p { font-size: 0.88rem; color: var(--crust-soft); margin-top: 6px; }
+
+  /* ----- ABOUT ----- */
+  .about { background: var(--cream-deep); }
+  .about-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 50px; align-items: center; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-img {
+    aspect-ratio: 1/1; border-radius: 18px;
+    background: linear-gradient(160deg, #b07f4d, #4f351f);
+    display: flex; align-items: center; justify-content: center; font-size: 5rem;
+  }
+  .about-text h2 { font-size: clamp(2rem, 4.5vw, 3rem); margin-bottom: 16px; }
+  .about-text p { color: var(--crust-soft); margin-bottom: 14px; }
+  .about-sign { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; color: var(--crust); }
+
+  /* ----- VISIT ----- */
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 700px) { .visit-grid { grid-template-columns: 1fr; } }
+  .visit-card { background: #fff; border: 1px solid var(--cream-deep); border-radius: 18px; padding: 36px; }
+  .visit-card h3 { font-size: 1.7rem; margin-bottom: 16px; }
+  .visit-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed var(--cream-deep); font-size: 0.92rem; }
+  .visit-row:last-child { border-bottom: none; }
+  .visit-row span:first-child { color: var(--crust-soft); }
+  .visit-row span:last-child { font-weight: 700; }
+  .visit-card .addr { font-size: 0.95rem; color: var(--crust-soft); margin-bottom: 8px; }
+
+  /* ----- FOOTER ----- */
+  footer { background: var(--crust); color: var(--cream); padding: 56px 0 30px; }
+  .foot-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; margin-bottom: 36px; }
+  .foot-brand { font-family: 'Cormorant Garamond', serif; font-size: 2rem; }
+  .foot-brand .amp { color: #f0c98a; font-style: italic; }
+  .foot-col h4 { font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px; color: #f0c98a; }
+  .foot-col p { font-size: 0.9rem; opacity: 0.85; }
+  .foot-bottom { border-top: 1px solid var(--crust-soft); padding-top: 22px; font-size: 0.8rem; opacity: 0.7; text-align: center; }
+  .foot-bottom a { color: #f0c98a; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="concept-banner">
+  Concept design &middot; a sample site by <a href="https://builtbyjake.site">builtbyjake.site</a> &middot; this bakery is fictional
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Crumb <span class="amp">&amp;</span> Co.</div>
+    <div class="nav-links">
+      <a href="#menu">Our Bakes</a>
+      <a href="#about">Our Story</a>
+      <a href="#visit">Visit Us</a>
+    </div>
+    <a href="#visit" class="nav-cta">Order a Cake</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal">
+      <div class="eyebrow">Artisan bakery &middot; Perth, WA</div>
+      <h1>Baked fresh<br />before the <em>sun</em><br />is even up.</h1>
+      <p>Small-batch sourdough, buttery pastries and celebration cakes — made by hand every morning in our little Perth bakehouse.</p>
+      <div class="hero-cta">
+        <a href="#menu" class="btn btn-solid">See our bakes</a>
+        <a href="#visit" class="btn btn-line">Find us</a>
+      </div>
+    </div>
+    <div class="hero-img reveal">
+      <span>est. in a tiny Perth kitchen</span>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span><em>Open</em> 6:30am daily</span>
+    <span><em>Sourdough</em> baked twice a day</span>
+    <span><em>Custom cakes</em> to order</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">From the bakehouse</div>
+      <h2>Today's bakes</h2>
+      <p>A rotating selection — here's what regulars come back for.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt1">🍞</div>
+        <div class="menu-body">
+          <h3>Country Sourdough</h3>
+          <div class="price">$8.00 a loaf</div>
+          <p>A 36-hour slow ferment with a deep, crackly crust and an open, chewy crumb.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt2">🥐</div>
+        <div class="menu-body">
+          <h3>Butter Croissant</h3>
+          <div class="price">$5.50 each</div>
+          <p>Laminated over three days with French cultured butter. Shatteringly flaky.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt3">🥧</div>
+        <div class="menu-body">
+          <h3>Seasonal Fruit Galette</h3>
+          <div class="price">$6.50 each</div>
+          <p>A free-form pastry packed with whatever fruit is best at the markets that week.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt4">🧁</div>
+        <div class="menu-body">
+          <h3>Cinnamon Scroll</h3>
+          <div class="price">$5.00 each</div>
+          <p>Soft, pull-apart dough swirled with cinnamon sugar and a cream-cheese glaze.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt5">🎂</div>
+        <div class="menu-body">
+          <h3>Celebration Cakes</h3>
+          <div class="price">from $65.00</div>
+          <p>Made to order for birthdays and events. Tell us the occasion and we'll bake it.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-thumb mt6">🥨</div>
+        <div class="menu-body">
+          <h3>Soft Pretzel</h3>
+          <div class="price">$4.50 each</div>
+          <p>Hand-twisted, golden and salted — a Saturday-morning favourite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="about-img reveal">👩‍🍳</div>
+    <div class="about-text reveal">
+      <h2>A bakery built on early mornings.</h2>
+      <p>Crumb &amp; Co. started with one home oven, a sourdough starter named Doughlores, and a stubborn belief that good bread takes time.</p>
+      <p>Years later we're still small on purpose. Everything is mixed, shaped and baked by hand — no shortcuts, no improvers, nothing you couldn't pronounce. Just flour, water, salt, butter and patience.</p>
+      <p>Walk in before 7am and the place still smells like the very first loaf.</p>
+      <div class="about-sign">— the Crumb &amp; Co. bakers</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Come say hello</div>
+      <h2>Visit the bakehouse</h2>
+      <p>Pop in for a coffee and a warm pastry, or order a cake ahead.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card reveal">
+        <h3>Opening hours</h3>
+        <div class="visit-row"><span>Monday – Friday</span><span>6:30am – 3:00pm</span></div>
+        <div class="visit-row"><span>Saturday</span><span>7:00am – 2:00pm</span></div>
+        <div class="visit-row"><span>Sunday</span><span>7:00am – 1:00pm</span></div>
+        <div class="visit-row"><span>Public holidays</span><span>Check socials</span></div>
+      </div>
+      <div class="visit-card reveal">
+        <h3>Find &amp; order</h3>
+        <p class="addr">📍 12 Baker's Lane, Perth WA 6000</p>
+        <p class="addr">📞 (08) 9000 0000</p>
+        <p class="addr">✉️ hello@crumbandco.example</p>
+        <p style="margin-top:14px; font-size:0.9rem; color:var(--crust-soft);">Custom cake orders need 48 hours' notice. Give us a call or drop in to chat about your occasion.</p>
+        <a href="#" class="btn btn-solid" style="margin-top:18px;">Order a cake</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Crumb <span class="amp">&amp;</span> Co.</div>
+        <p style="opacity:0.8; font-size:0.9rem; max-width:260px; margin-top:8px;">Small-batch artisan baking in the heart of Perth.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>12 Baker's Lane<br />Perth WA 6000</p>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri 6:30–3<br />Weekends from 7am</p>
+      </div>
+      <div class="foot-col">
+        <h4>Follow</h4>
+        <p>Instagram<br />Facebook</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      This is a concept design — a sample site created by <a href="https://builtbyjake.site">builtbyjake.site</a>. Crumb &amp; Co. is not a real business.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 3) * 0.08 + 's';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

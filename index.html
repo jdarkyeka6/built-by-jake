@@ -212,6 +212,15 @@
   .work-link { font-size: 0.84rem; font-weight: 700; color: var(--accent); text-decoration: none; }
   .work-link:hover { text-decoration: underline; }
 
+  .demo-callout {
+    margin-top: 22px;
+    background: var(--panel); border: 1px solid var(--accent-deep);
+    border-radius: var(--radius); padding: 32px 36px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 28px; flex-wrap: wrap;
+  }
+  .demo-callout h3 { font-family: 'Fraunces', serif; }
+
   /* ---------- PROCESS ---------- */
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
   @media (max-width: 760px) { .steps { grid-template-columns: 1fr 1fr; } }
@@ -287,6 +296,7 @@
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#work">Work</a>
+      <a href="demos.html">Demos</a>
       <a href="#process">Process</a>
       <a href="#about">About</a>
       <a href="#faq">FAQ</a>
@@ -428,6 +438,15 @@
         </div>
         <a class="work-link" href="#contact">Ask for a demo &rarr;</a>
       </div>
+    </div>
+
+    <div class="demo-callout reveal">
+      <div>
+        <span class="kicker" style="color:var(--ink-faint);">See what I'd build for you</span>
+        <h3 style="font-size:1.55rem; margin:8px 0 6px;">Concept designs for your kind of business</h3>
+        <p style="color:var(--ink-dim); font-size:0.92rem;">Bakery, café, tradie, personal trainer, salon — sample sites showing how yours could look.</p>
+      </div>
+      <a href="demos.html" class="btn btn-primary" style="white-space:nowrap;">View the demos &rarr;</a>
     </div>
   </div>
 </section>
